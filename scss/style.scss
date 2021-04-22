@@ -1,0 +1,230 @@
+@import "reset";
+@import "base";
+@import "classes";
+@import "animations";
+@import "media-querries";
+
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid:
+    "picture header" auto
+    "aside main" 1fr
+    "footer footer" auto
+    / 350px auto;
+  @include xs {
+    grid:
+      "header" auto
+      "main" auto
+      "picture" auto
+      "aside" auto
+      "footer" auto / auto;
+  }
+}
+
+header {
+  grid-area: header;
+  min-height: 30rem;
+  background: linear-gradient(to right, var(--primary), var(--light));
+  padding: 8rem 5rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include xs {
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 6rem;
+    line-height: 8rem;
+    font-weight: 300;
+    letter-spacing: 3rem;
+    @include xs {
+      font-size: 4rem;
+    }
+  }
+  span {
+    display: inline-block;
+    animation: bounce 2s;
+  }
+
+  p {
+    letter-spacing: 0.5rem;
+  }
+}
+
+.picture {
+  grid-area: picture;
+  padding: 8rem;
+  background: var(--background);
+  border-right: 1px solid #ddd;
+  img {
+    border-radius: 50%;
+  }
+}
+aside {
+  grid-area: aside;
+  background: var(--background);
+  border-right: 1px solid #ddd;
+  padding: 5rem;
+  @include xs {
+    padding: 2rem 1rem;
+  }
+  .block {
+    margin-bottom: 5rem;
+  }
+  h3 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+  }
+  p {
+    margin: 0 0 2rem 0;
+    font-style: italic;
+  }
+  .bar-skill {
+    height: 5px;
+    background: var(--light);
+    position: relative;
+    margin: 1rem 0 2rem;
+  }
+  .bar-skill-progress {
+    height: 5px;
+    width: 80%;
+    background: var(--primary);
+  }
+  .bar-skill-dot {
+    width: 10px;
+    height: 10px;
+    background: blue;
+    position: absolute;
+    left: calc(80% - 5px);
+    top: -2.5px;
+    border-radius: 50%;
+  }
+  .star {
+    margin: 2rem 0 3rem 0;
+    color: var(--hint);
+  }
+  i {
+    margin: 1rem;
+    font-size: 2rem;
+  }
+  .social {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    &:hover {
+      background: var(--hint);
+      i {
+        color: var(--primary);
+        transform: scale(1.3);
+        transition: 0.2s;
+      }
+    }
+  }
+  i {
+    margin-right: 1rem;
+    flex: 0 0 50px;
+  }
+  p {
+    flex: auto;
+    margin: 0;
+  }
+}
+main {
+  grid-area: main;
+  padding: 5rem;
+  @include xs {
+    padding: 2rem 1rem;
+  }
+  h2 {
+    letter-spacing: 0.1rem;
+    margin-bottom: 5rem;
+  }
+  p {
+    letter-spacing: 0.1rem;
+    line-height: 3rem;
+  }
+  h2 {
+    margin-top: 5rem;
+  }
+  .experience {
+    display: flex;
+    margin-bottom: 5rem;
+  }
+  .time {
+    padding: 0 2rem;
+    text-align: center;
+    border-right: 1px solid var(--hint);
+  }
+  .detail {
+    padding-left: 2rem;
+  }
+  p {
+    margin: 0;
+  }
+  li {
+    list-style: circle;
+    margin: 1rem 4rem;
+  }
+}
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: var(--text);
+  padding: 5rem;
+  h2 {
+    margin-bottom: 3rem;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    .prefix,
+    .postfix {
+      background: linear-gradient(to right, var(--dark), var(--light));
+      padding: 1rem 2rem;
+      color: white;
+      font-size: 2rem;
+    }
+    .prefix {
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+    button {
+      background: var(--text);
+      border: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        opacity: 0.8;
+      }
+      .postfix {
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+    input {
+      outline: 0;
+      border: 0;
+      min-width: 400px;
+      padding: 1rem 2rem;
+      line-height: 2rem;
+      @include xs {
+        min-width: 180px;
+        padding: 1rem 1rem;
+      }
+      &::placeholder {
+        color: var(--text);
+      }
+    }
+  }
+}
